@@ -9,6 +9,7 @@
     <title>Plot</title>
 </head>
 <body>
+
     <div class="container">
         <canvas id="myChart"></canvas>
     </div>
@@ -17,8 +18,17 @@
         let myChart = document.getElementById('myChart').getContext('2d');
 
         // Chart Data
+        var chartname = "Chart Name";
         const colors = ['red', 'yellow', 'blue'];
-        const datas = [10, 20, 30, 40, 50];
+        var dataA, dataB;
+
+        // Java data load
+        function JavaData() {
+            dataA = document.myApplet.getDataAJava();
+            dataB = document.myApplet.getDataBJava();
+            alert("dataA: "+dataA);
+            alert("dataB: "+dataB);
+        }
 
         // Chart construction
         let massPopChart = new Chart(myChart, {
@@ -30,14 +40,14 @@
                     label: 'Chart 1',
                     backgroundColor: 'transparent',
                     borderColor: 'red',
-                    data:[617, 681, 60, 40, 100]
+                    data:dataA,
                     },
                 
                     {
                     label: 'Chart 2',
                     backgroundColor: 'transparent',
                     borderColor: 'blue',
-                    data:[216, 50, 289, 16, 278]
+                    data:dataB,
                     }
                 
                 ]

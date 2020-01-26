@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <title>Graph Plot</title>
+    <title>Plot</title>
 </head>
 <body>
     <div class="container">
@@ -15,6 +15,63 @@
 
     <script>
         let myChart = document.getElementById('myChart').getContext('2d');
+
+        // Chart Data
+        const colors = ['red', 'yellow', 'blue'];
+        const datas = [10, 20, 30, 40, 50];
+
+        // Chart construction
+        let massPopChart = new Chart(myChart, {
+            type: 'line', //bar, horizontalBar, pie, line, doughnut, radar, polarArea
+            data:{
+                labels:['10', '20', '30', '40', '50'],
+                datasets:[
+                    {
+                    label: 'Chart 1',
+                    backgroundColor: 'transparent',
+                    borderColor: 'red',
+                    data:[617, 681, 60, 40, 100]
+                    },
+                
+                    {
+                    label: 'Chart 2',
+                    backgroundColor: 'transparent',
+                    borderColor: 'blue',
+                    data:[216, 50, 289, 16, 278]
+                    }
+                
+                ]
+            },
+
+
+            // Chart Style
+            options:{
+                title: {
+                    display:true,
+                    text: 'Chart Name',
+                    fontSize : 25
+                },
+                legend: {
+                    display:true,
+                    position:'right',
+                    labels:{
+                        fontColor:"#000"
+                    }
+                },
+                layout: {
+                    padding: {
+                        left : 50,
+                        right : 50,
+                        bottom: 0,
+                        top: 0
+                    }
+                },
+                tooltips: {
+                    enabled:true
+                }
+            }
+        });
+
     </script>
 </body>
 </html>

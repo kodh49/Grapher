@@ -1,6 +1,26 @@
 <?php
 // Database Connection Settings
-$host
+    $host = 'localhost';
+    $user = 'root';
+    $pass = '';
+    $db = 'grapher';
+    $mysqli = new mysqli($host, $user, $pass, $db) or die($mysqli->error);
+
+    $data1 = '';
+    $data2 = '';
+
+    // Query to get data from the table
+    $sql = "SELECT * FROM 'chart'";
+    $result = mysqli_query($mysqli, $sql);
+
+    // Loop through the returned data
+    while ($row = mysqli_fetch_array($result)) {
+        $data1 = $data1 . '"' . $row['xval'].'",';
+        $data2 = $data2 . '"' . $row['yval'].'",';
+    }
+
+    $data1 = trim($data1, ",");
+    $data2 = trim($data2, ",");
 ?>
 
 
@@ -25,20 +45,14 @@ const colors = ['red', 'yellow', 'blue'];
 
 // Chart Data
 var data = {
-    labels:['10', '20', '30', '40', '50'],
+    labels:[<?php echo $data1; ?>],
     datasets:[
     {
     label: 'Chart 1',
     backgroundColor: 'transparent',
     borderColor: colors[0],
-    data: [10, 10, 2, 4, 8],
-    },
-
-    {
-    label: 'Chart 2',
-    backgroundColor: 'transparent',
-    borderColor: colors[1],
-    data:[9, 7, 4, 6, 4],
+    borderWidth: 3,
+    data: [<?php echo $data2; ?>],
     }
     ]
 };
@@ -79,43 +93,6 @@ var myLineChart = new Chart(myChart, {
     data: data,
     options: options
 });
-    </script>
-
-
-
-    <button id="sendAjax">Button</button>
-
-
-
-    <script>
-    // Data Reload Button
-var button = document.getElementById("sendAjax")
-
-button.addEventListener("click", function() {
-    sendAjax('http://localhost:5500/');
-})
-
-function sendAjax(url) {
-    var oReq = new XMLHttpRequest();
-
-    oReq.open('POST', url);
-    oReq.setRequestHeader('Content-Type', "application/json")
-    oReq.send();
-
-    oReq.addEventListener('load', function() {
-        var result = JSON.parse(oReq.responseText);
-        var score = result.score;
-        var comp_data = data.datasets[0].data;
-
-        for (var i = 0; i < comp_data.length; i++) {
-            comp_data[i] = score[i];
-        }
-
-        data.datasets[0].data = comp_data;
-        myLineChart.update();
-    })
-}
-
     </script>
 </body>
 </html>

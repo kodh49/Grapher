@@ -1,5 +1,10 @@
 package sql;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 public class Control {
     public static void main(String[] args) {
         DBA t = new DBA();
@@ -10,5 +15,14 @@ public class Control {
             t.tableInsert("chart", x[i], y[i]);
         }
         t.tableSelect("chart");
+
+        // Web page Loading
+        try {
+            Desktop.getDesktop().browse(new URI("http://localhost/index.php"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-var options = require('../js/option');
+var options = require('../js/src/option');
 
 var loginData = {
     host: options.storageConfig.HOST,
@@ -21,8 +21,8 @@ connection.connect();
 
 app.use(express.static('public'));
 
-app.listen(3000, function() {
-    console.log("Port "+3000+"에서 서버 동작");
+app.listen(5500, function() {
+    console.log("Port "+5500+"에서 서버 동작");
 })
 
 app.get('/', function(req, res) {

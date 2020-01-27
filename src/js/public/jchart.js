@@ -64,7 +64,7 @@ var myLineChart = new Chart(myChart, {
 var button = document.getElementById("sendAjax")
 
 button.addEventListener("click", function() {
-    sendAjax('http://localhost:3000/');
+    sendAjax('http://localhost:5500/');
 })
 
 function sendAjax(url) {

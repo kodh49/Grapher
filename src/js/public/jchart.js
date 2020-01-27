@@ -11,14 +11,14 @@ var data = {
     label: 'Chart 1',
     backgroundColor: 'transparent',
     borderColor: 'red',
-    data: [0, 0, 0, 0, 0],
+    data: [10, 10, 2, 4, 8],
     },
 
     {
     label: 'Chart 2',
     backgroundColor: 'transparent',
     borderColor: 'blue',
-    data:[0, 0, 0, 0, 0],
+    data:[9, 7, 4, 6, 4],
     }
     ]
 };

@@ -49,7 +49,7 @@ public class DBA {
     public void tableInsert(String name, double xval, double yval) { // name 은 table 의 이름
         TableName tn = new TableName(xval, yval);
         String query = "INSERT INTO "+name+" "+"VALUE (" + tn.xval + ", " + tn.yval +");";
-        System.out.println(query);
+        //System.out.println(query);
         // Upload data
         try {
             //Access database

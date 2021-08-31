@@ -1,13 +1,13 @@
 package numjv;
 import java.util.ArrayList;
 
-public final class ndarray {
+public final class linreg {
 
-    public static final double pi = 3.14159;
+    public static final double pi = 3.14;
 
-    public static double[] linspace(double start, double stop, int num) {
+    public static double[] linspace(double start, double stop, double num) {
         ArrayList<Double> list = new ArrayList<>();
-        double inv = Math.abs(stop-start)/(double)num;
+        double inv = Math.abs(stop-start)/num;
         if (stop > start) {
             for (double i=start; i<=stop; i+=inv) {
                 list.add(i);
